@@ -1,0 +1,35 @@
+{
+  "name": "nodejsdocker",
+  "version": "1.0.0",
+  "description": "Is a project for sell coffee products",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "  nodemon -r dotenv/config index.js",
+    "docker-dev": "npm i && node index.js",
+    "start": "NODE_ENV=production node index.js",
+    "lint": "standard"
+  },
+  "keywords": [
+    "coffee"
+  ],
+  "author": " <eddylson.londonio@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "standard": "^16.0.3"
+  }
+}
