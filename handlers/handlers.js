@@ -8,6 +8,7 @@ function notFoundError (req, res) {
 }
 
 function serverError (err, req, res, next) {
+  console.error(err)
   return res.status(500).send({
     message: 'Server Error',
     ok: false
