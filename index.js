@@ -5,16 +5,18 @@ const app = express()
 const morgan = require('morgan')
 const handler = require('./handlers/handlers')
 const sellerRouter = require('./router/seller')
-
+// const cors = require('cors')
 // database
 
 const setup = require('./database/setup')
 
 const port = process.env.PORT || 8080
 
+// middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(morgan('dev'))
+// app.use(cors)
 
 app.use('*', (req, res, next) => {
   try {
