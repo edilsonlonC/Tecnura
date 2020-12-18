@@ -15,10 +15,12 @@ services :
     working_dir: /home/node/app/
     command: npm run docker-dev
     container_name: nodejs
+    environment:
+      NODE_ENV: docker
     depends_on:
       - db
     ports:
-      - 8080:8080
+      - 3000:8080
     volumes: 
       - .:/home/node/app
 

@@ -29,10 +29,16 @@ app.use('*', (req, res, next) => {
 // Should create middleware for router
 
 app.use('/api', sellerRouter)
-
+// test for nginx 
+app.get('/', (req, res) => {
+  return res.status(200).send({
+    message: 'ok in nginx =)'
+  })
+})
 // handlers
 app.get('*', handler.notFoundError)
 // handler error
+
 app.use(handler.serverError)
 
 app.listen(port, async (err) => {

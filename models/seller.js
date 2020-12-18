@@ -1,7 +1,7 @@
 'use strict'
 const setup = require('../database/setup')
 const { Sequelize, DataTypes } = require('sequelize')
-
+const { getHash } = require('../crypt/crypt')
 module.exports = function Usersetup () {
   const sequelize = setup()
   const Seller = sequelize.define('Seller', {
@@ -21,7 +21,10 @@ module.exports = function Usersetup () {
     },
     password: {
       type: DataTypes.STRING(300),
-      allowNull: false
+      allowNull: false,
+      set (value) {
+        this.setDataValue('password', getHash(value))
+      }
     },
     address: {
       type: DataTypes.STRING

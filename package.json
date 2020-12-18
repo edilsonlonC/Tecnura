@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "  nodemon -r dotenv/config index.js",
-    "docker-dev": "npm i && node index.js",
+    "docker-dev": "NODE_ENV=docker npm i && node index.js",
     "start": "NODE_ENV=production node index.js",
     "lint": "standard"
   },
@@ -16,6 +16,7 @@
   "author": " <eddylson.londonio@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
