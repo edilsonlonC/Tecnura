@@ -1,12 +1,15 @@
 module.exports = {
   env: {
-    es6: true
+    extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+    es6: true,
+    node: true
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:node/recommended'
-  ],
+  plugins: ['prettier'],
+  parserOptions: {
+    ecmacVersion: 2018
+  },
   rules: {
-    indent: ['error', 2]
+    'prettier/prettier': 'error',
+    indent: ['error', 4, { SwitchCase: 1 }]
   }
 }

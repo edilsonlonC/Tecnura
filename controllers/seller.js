@@ -1,6 +1,7 @@
 'use strict'
 const ModelSeller = require('../models/seller')()
 const ModelProduct = require('../models/product')()
+
 async function createUser (req, res, next) {
   try {
     const seller = await ModelSeller.create({
@@ -9,7 +10,6 @@ async function createUser (req, res, next) {
       password: 'test password'
     })
     const sellerJson = seller.toJSON()
-    console.log(sellerJson)
     const product = await ModelProduct.create({
       name: 'product name',
       price: 2.4,
@@ -18,8 +18,8 @@ async function createUser (req, res, next) {
     })
     return res.status(200).send({
       message: 'Working',
-      seller,
-      product
+      seller: seller.toJSON(),
+      product: product.toJSON()
     })
   } catch (e) {
     next(e)

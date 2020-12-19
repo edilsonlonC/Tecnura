@@ -29,7 +29,8 @@ app.use('*', (req, res, next) => {
 // Should create middleware for router
 
 app.use('/api', sellerRouter)
-// test for nginx 
+// test for nginx
+
 app.get('/', (req, res) => {
   return res.status(200).send({
     message: 'ok in nginx =)'
@@ -41,9 +42,11 @@ app.get('*', handler.notFoundError)
 
 app.use(handler.serverError)
 
-app.listen(port, async (err) => {
-  if (err) return console.error(err)
-  const sequelize = setup()
-  await sequelize.sync({ force: true })
-  console.log(`server is running on port ${port}`)
-})
+if (!module.parent) {
+  app.listen(port, async (err) => {
+  	if (err) return console.error(err)
+  	const sequelize = setup()
+  	await sequelize.sync({ force: true })
+  	console.log(`server is running on port ${port}`)
+  })
+} else module.exports = app
