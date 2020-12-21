@@ -7,7 +7,7 @@
     "test": "NODE_ENV=dev jest",
     "test:coverage": "jest --collectCoverage",
     "dev": "nodemon -r dotenv/config index.js",
-    "docker-dev": "NODE_ENV=docker npm i && node index.js",
+    "docker-dev": "DEBUG=tecnura* NODE_ENV=docker npm i && node index.js",
     "start": "NODE_ENV=production node index.js",
     "lint": "standard",
     "fix": "standard --fix '!./test'"

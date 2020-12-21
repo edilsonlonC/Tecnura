@@ -17,6 +17,7 @@ services :
     container_name: nodejs
     environment:
       NODE_ENV: docker
+      DEBUG: tecnura*
     depends_on:
       - db
     ports:

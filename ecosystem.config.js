@@ -6,9 +6,6 @@ module.exports = {
 			'NODE_ENV':'dev'
 		},
     watch: '.'
-	}, {
-		name: 'my_app',
-    script: './app',
-  }],
+	},],
 
 };
