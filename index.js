@@ -1,5 +1,5 @@
 'use strict'
-
+const debug = require('debug')('tecnura')
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
@@ -46,7 +46,9 @@ if (!module.parent) {
   app.listen(port, async (err) => {
   	if (err) return console.error(err)
   	const sequelize = setup()
-  	await sequelize.sync({ force: true })
-  	console.log(`server is running on port ${port}`)
+		await sequelize.sync({ force: true })
+
+		debug('listening')
+		debug(`server is running on port ${port}`)
   })
 } else module.exports = app

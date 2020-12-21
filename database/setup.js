@@ -1,5 +1,5 @@
 'use strict'
-
+const debug = require('debug')('tecnura:db')
 const { Sequelize } = require('sequelize')
 
 let sequelize = null
@@ -10,7 +10,8 @@ function main () {
   const { database, host, username, password } = config
   if (!sequelize) {
     sequelize = new Sequelize(database, username, password, {
-      dialect: 'postgres',
+			dialect: 'postgres',
+			logging: msg => debug(msg),
       host
     })
   }
