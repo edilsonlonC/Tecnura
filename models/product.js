@@ -9,7 +9,7 @@ module.exports = function () {
     product_id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
-			//primaryKey: true
+			primaryKey: true
     },
     name: {
       type: DataTypes.STRING,

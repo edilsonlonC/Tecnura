@@ -1,6 +1,6 @@
 'use strict'
-const ModelProduct = require('../models/product')()
-const ModelSeller = require('../models/seller')()
+
+const { ModelProduct , ModelSeller } = require('../database/lib')()
 const sequelize = require('../database/setup')()
 const debug = require('debug')('tecnura:api:products')
 
@@ -28,7 +28,12 @@ async function getProducts(req,res,next){
 		debug(limit,offset)
 	
 		const products = await ModelProduct.findAll({
-			include: [ModelSeller]
+			include: {
+				model: ModelSeller,
+				as: "Seller",
+				required: true
+
+			}
 		})
 		const count = products.length
 		return res.status(200).send({

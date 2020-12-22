@@ -1,7 +1,5 @@
 'use strict'
-const ModelSeller = require('../models/seller')()
-const ModelProduct = require('../models/product')()
-
+const { ModelSeller , ModelProduct } = require('../database/lib')()
 async function createUser (req, res, next) {
   try {
     const seller = await ModelSeller.create({
