@@ -5,11 +5,11 @@ const { Sequelize, DataTypes } = require('sequelize')
 
 module.exports = function () {
   const sequelize = setup()
-  let Product = sequelize.define('product', {
+  const Product = sequelize.define('product', {
     product_id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
-			primaryKey: true
+      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
@@ -24,8 +24,8 @@ module.exports = function () {
     },
     img: {
       type: DataTypes.STRING(300)
-    },
-    
-	})
+    }
+
+  })
   return Product
 }

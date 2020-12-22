@@ -46,13 +46,12 @@ app.get('*', handler.notFoundError)
 
 app.use(handler.serverError)
 
-
 if (!module.parent) {
   app.listen(port, async (err) => {
     if (err) return debug(err)
-		const sequelize = setup()
-		debug('sync server')
-		await sequelize.sync({ force: true })
+    const sequelize = setup()
+    debug('sync server')
+    await sequelize.sync({ force: true })
 
     debug('listening')
     debug(`server is running on port ${port}`)
