@@ -5,6 +5,8 @@ const app = express()
 const morgan = require('morgan')
 const handler = require('./handlers/handlers')
 const sellerRouter = require('./router/seller')
+const buyerRouter = require('./router/buyer')
+const productRouter = require('./router/product')
 // const cors = require('cors')
 // database
 
@@ -29,6 +31,8 @@ app.use('*', (req, res, next) => {
 // Should create middleware for router
 
 app.use('/api', sellerRouter)
+app.use('/api', buyerRouter)
+app.use('/api', productRouter)
 // test for nginx
 
 app.get('/', (req, res) => {
@@ -42,13 +46,15 @@ app.get('*', handler.notFoundError)
 
 app.use(handler.serverError)
 
+
 if (!module.parent) {
   app.listen(port, async (err) => {
-  	if (err) return console.error(err)
-  	const sequelize = setup()
+    if (err) return debug(err)
+		const sequelize = setup()
+		debug('sync server')
 		await sequelize.sync({ force: true })
 
-		debug('listening')
-		debug(`server is running on port ${port}`)
+    debug('listening')
+    debug(`server is running on port ${port}`)
   })
 } else module.exports = app

@@ -10,7 +10,7 @@
     "docker-dev": "DEBUG=tecnura* NODE_ENV=docker npm i && node index.js",
     "start": "NODE_ENV=production node index.js",
     "lint": "standard",
-    "fix": "standard --fix '!./test'"
+    "fix": "standard --fix"
   },
   "keywords": [
     "coffee"
@@ -33,5 +33,10 @@
     "nodemon": "^2.0.6",
     "standard": "^16.0.3",
     "supertest": "^6.0.1"
-  }
+  },
+	"standard": {
+		"ignore": [
+			"test/*"
+		]
+	}
 }

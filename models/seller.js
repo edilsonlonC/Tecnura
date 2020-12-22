@@ -1,14 +1,18 @@
 'use strict'
 const setup = require('../database/setup')
+const Product = require('./product')()
+const debug = require('debug')('tecnura:db:models')
 const { Sequelize, DataTypes } = require('sequelize')
 const { getHash } = require('../crypt/crypt')
-module.exports = function Usersetup () {
+
+
+module.exports = function () {
   const sequelize = setup()
-  const Seller = sequelize.define('Seller', {
+  let Seller = sequelize.define('Seller', {
     seller_id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
-      primaryKey: true
+			//primaryKey: true
 
     },
     name: {
@@ -30,8 +34,12 @@ module.exports = function Usersetup () {
       type: DataTypes.STRING
     }
 
-  }
-  )
+	})
+
+	Seller.hasMany(Product)
+	Product.belongsTo(Seller)
+	
+	
 
   return Seller
 }

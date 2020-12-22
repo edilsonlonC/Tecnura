@@ -1,5 +1,8 @@
 {
 	"name":"testname",
 	"email":"test@gmail.com",
-	"password":"testpass"
+	"password":"testpass",
+	"SellerId":"643351eb-2655-4203-98fc-c6d8e8625962",
+	"description": "description of product test",
+	"price":2.0
 }

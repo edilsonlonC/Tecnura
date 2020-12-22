@@ -10,8 +10,8 @@ function main () {
   const { database, host, username, password } = config
   if (!sequelize) {
     sequelize = new Sequelize(database, username, password, {
-			dialect: 'postgres',
-			logging: msg => debug(msg),
+      dialect: 'postgres',
+      logging: msg => debug(msg),
       host
     })
   }
