@@ -45,26 +45,25 @@ async function getProducts (req, res, next) {
   }
 }
 
-async function getProductsBySeller(req,res,next){
-	const { uuid } = req.params
-	try{
-		const Products = await ModelProduct.findAll({
-			where: {
-				SellerId: uuid
-			}
-		})
-		return res.status(200).send({
-			ok:true,
-			Products
-		})
-
-	}catch(e){
-		next(e)
-	}
+async function getProductsBySeller (req, res, next) {
+  const { uuid } = req.params
+  try {
+    const Products = await ModelProduct.findAll({
+      where: {
+        SellerId: uuid
+      }
+    })
+    return res.status(200).send({
+      ok: true,
+      Products
+    })
+  } catch (e) {
+    next(e)
+  }
 }
 
 module.exports = {
   createProduct,
-	getProducts,
-	getProductsBySeller
+  getProducts,
+  getProductsBySeller
 }
