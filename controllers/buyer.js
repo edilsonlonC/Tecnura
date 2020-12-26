@@ -18,6 +18,42 @@ async function createBuyer (req, res, next) {
   }
 }
 
+async function updateBuyer( req, res, next ){
+	const { uuid } = req.params
+	const { name } = req.body
+	try{
+		const updatedBuyer = await ModelBuyer.update({email},{
+			where: {
+				buyer_id: uuid
+			}
+		})
+		return res.status(200).send({
+			ok: true,
+			updatedBuyer
+		})
+
+	}catch(e){
+		next(e)
+	}
+}
+
+async function deleteBuyer(req,res,next){
+	const { uuid } = req.params
+	try{
+		const removedBuyer = await ModelBuyer.destroy({
+			buyer_id: uuid
+		})
+		return res.status(200).send({
+			ok: true,
+			removedBuyer
+		})
+	}catch(e){
+		next(e)
+	}
+}
+
 module.exports = {
-  createBuyer
+	createBuyer,
+	updateBuyer,
+	deleteBuyer
 }

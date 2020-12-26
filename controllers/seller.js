@@ -37,6 +37,46 @@ async function createSeller (req, res, next) {
   }
 }
 
+async function updatesSeller(req, res, next) {
+	const { uuid } = req.params
+	const { name , address} = req.body
+	try{
+		const updatedSeller = await ModelSeller.update({
+			name,
+			address
+		}, {
+			where:{
+				seller_id: uuid
+			}
+		})
+		return res.status(200).send({
+			ok:true,
+			updatedSeller
+		})
+
+	}catch(e){
+		next(e)
+	}
+}
+
+async function deleteSeller(req, res, next) {
+	const { uuid } = req.params
+	try{
+		const removedSeller = await ModelProduct.destroy({
+			where: {
+				product_id: uuid
+			}
+		})
+		return res.status(200).send({
+			ok: true,
+			removedSeller
+		})
+
+	}catch(e){
+		next(e)
+	}
+}
+
 module.exports = {
   createUser,
   createSeller
