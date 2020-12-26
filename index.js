@@ -51,7 +51,7 @@ if (!module.parent) {
     if (err) return debug(err)
     const sequelize = setup()
     debug('sync server')
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ alter: true })
 
     debug('listening')
     debug(`server is running on port ${port}`)
