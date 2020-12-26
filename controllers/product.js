@@ -27,6 +27,8 @@ async function getProducts (req, res, next) {
     debug(limit, offset)
 
     const products = await ModelProduct.findAll({
+      limit,
+      offset,
       include: {
         model: ModelSeller,
         as: 'Seller',
@@ -46,10 +48,12 @@ async function getProducts (req, res, next) {
 }
 
 async function getProductsBySeller (req, res, next) {
-	const { uuid } = req.params
-	const { limit, offset } = req.query
+  const { uuid } = req.params
+  const { limit, offset } = req.query
   try {
     const Products = await ModelProduct.findAll({
+      limit,
+      offset,
       where: {
         SellerId: uuid
       }
@@ -63,47 +67,46 @@ async function getProductsBySeller (req, res, next) {
   }
 }
 
-async function updateProduct (req,res,next) {
-	const { name , price ,description } = req.body
-	const { uuid } = req.params
-	try{
-		const updatedProduct = await ModelProduct.update({
-			name, price, description
-		},{
-			where: {
-				product_id: uuid
-			}
-		})
-		return res.status(200).send({
-			ok: true,
-			updatedProduct
-		})
-
-	}catch(e){
-		next(e)
-	}
+async function updateProduct (req, res, next) {
+  const { name, price, description } = req.body
+  const { uuid } = req.params
+  try {
+    const updatedProduct = await ModelProduct.update({
+      name, price, description
+    }, {
+      where: {
+        product_id: uuid
+      }
+    })
+    return res.status(200).send({
+      ok: true,
+      updatedProduct
+    })
+  } catch (e) {
+    next(e)
+  }
 }
 
-async function deleteProduct (req, res, next){
-	const { uuid } = req.params
-	try{
-		const deletedProduct = await ModelProduct.destroy({
-			where:{
-				product_id: uuid
-			}
-		})
-		return res.status(200).send({
-			deletedProduct
-		})
-
-	}catch(e){
-		next(e)
-	}
+async function deleteProduct (req, res, next) {
+  const { uuid } = req.params
+  try {
+    const deletedProduct = await ModelProduct.destroy({
+      where: {
+        product_id: uuid
+      }
+    })
+    return res.status(200).send({
+      deletedProduct
+    })
+  } catch (e) {
+    next(e)
+  }
 }
 
 module.exports = {
   createProduct,
   getProducts,
-	getProductsBySeller,
-	deleteProduct
+  getProductsBySeller,
+  deleteProduct,
+  updateProduct
 }
