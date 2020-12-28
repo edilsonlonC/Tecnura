@@ -12,23 +12,7 @@ module.exports = function () {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true
-    },
-    ProductId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: Product,
-        key: 'product_id'
-      },
-      BuyerId: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-          model: Buyer,
-          key: 'buyer_id'
-        }
-      }
     }
-  })
+	})
   return Order
 }
