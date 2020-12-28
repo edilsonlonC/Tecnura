@@ -1,8 +1,6 @@
 'use strict'
 
 const setup = require('../database/setup')
-const Product = require('./product')
-const Buyer = require('./buyer')
 const { Sequelize, DataTypes } = require('sequelize')
 
 module.exports = function () {
@@ -13,6 +11,6 @@ module.exports = function () {
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true
     }
-	})
+  })
   return Order
 }

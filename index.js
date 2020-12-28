@@ -34,7 +34,7 @@ app.use('*', (req, res, next) => {
 app.use('/api', sellerRouter)
 app.use('/api', buyerRouter)
 app.use('/api', productRouter)
-app.use('/api',orderRouter)
+app.use('/api', orderRouter)
 // test for nginx
 
 app.get('/', (req, res) => {

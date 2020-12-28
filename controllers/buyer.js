@@ -1,5 +1,5 @@
 'use strict'
-const ModelBuyer = require('../models/buyer')()
+const { ModelBuyer } = require('../database/lib')()
 
 async function createBuyer (req, res, next) {
   const { name, email, password } = req.body
