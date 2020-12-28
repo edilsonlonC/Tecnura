@@ -7,6 +7,7 @@ const handler = require('./handlers/handlers')
 const sellerRouter = require('./router/seller')
 const buyerRouter = require('./router/buyer')
 const productRouter = require('./router/product')
+const orderRouter = require('./router/order')
 // const cors = require('cors')
 // database
 
@@ -33,6 +34,7 @@ app.use('*', (req, res, next) => {
 app.use('/api', sellerRouter)
 app.use('/api', buyerRouter)
 app.use('/api', productRouter)
+app.use('/api',orderRouter)
 // test for nginx
 
 app.get('/', (req, res) => {
