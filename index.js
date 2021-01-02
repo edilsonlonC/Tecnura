@@ -8,6 +8,7 @@ const sellerRouter = require('./router/seller')
 const buyerRouter = require('./router/buyer')
 const productRouter = require('./router/product')
 const orderRouter = require('./router/order')
+const loginRouter = require('./router/login')
 // const cors = require('cors')
 // database
 
@@ -35,6 +36,7 @@ app.use('/api', sellerRouter)
 app.use('/api', buyerRouter)
 app.use('/api', productRouter)
 app.use('/api', orderRouter)
+app.use('/api', loginRouter)
 // test for nginx
 
 app.get('/', (req, res) => {
