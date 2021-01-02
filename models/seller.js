@@ -5,7 +5,7 @@ const { getHash } = require('../crypt/crypt')
 
 module.exports = function () {
   const sequelize = setup()
-  const Seller = sequelize.define('Seller', {
+  const Seller = sequelize.define('seller', {
     seller_id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -14,11 +14,14 @@ module.exports = function () {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+			allowNull: false,
+			unique: true
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+			allowNull: false,
+			unique: true,
+			isEmail: true
     },
     password: {
       type: DataTypes.STRING(300),
@@ -31,7 +34,9 @@ module.exports = function () {
       type: DataTypes.STRING
     }
 
-  })
+	})
+	
+
 
   return Seller
 }
