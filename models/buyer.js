@@ -11,14 +11,14 @@ module.exports = function BuyerSetup () {
     },
     name: {
       type: DataTypes.STRING,
-			allowNull: false,
-			unique: true
+      allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
-			allowNull: false,
-			unique: true,
-			isEmail: true
+      allowNull: false,
+      unique: true,
+      isEmail: true
     },
     password: {
       type: DataTypes.STRING,
