@@ -31,7 +31,7 @@ async function getProducts (req, res, next) {
       offset,
       include: {
         model: ModelSeller,
-        as: 'Seller',
+        as: 'seller',
         required: true
 
       }

@@ -1,5 +1,5 @@
 'use strict'
-
+const debug = require('debug')('tecnura:api:handler')
 function notFoundError (req, res) {
   return res.status(404).send({
     message: 'Page Not Found',
@@ -8,6 +8,7 @@ function notFoundError (req, res) {
 }
 
 function serverError (err, req, res, next) {
+	debug(err)
   if (err.message === 'unauthorized') {
     return res.status(401).send({
       message: 'unauthorized'

@@ -4,7 +4,7 @@ const configJWT = require('../config/conf-auth')
 const debug = require('debug')('tecnura:auth')
 
 function generateJwt (data, secret) {
-  const token = jwt.sign(data, secret, { expiresIn: 30 })
+  const token = jwt.sign(data, secret, { expiresIn: "1h" })
   return token
 }
 
